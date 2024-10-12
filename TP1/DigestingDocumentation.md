@@ -43,7 +43,7 @@ The man page says we need to provide the argument `--printfile` and then pass th
 ### Explanation
 
 use `man challenge` to display the man page of `challeneg` program.\
-As we can see in the man page `--whggvb NUM`'s description says that to print the flag `NUM` is     `221`. So we provide the correct arguments to `/challenge/challenge --whggvb 221` which displays the right flag. 
+As we can see in the man page `--whggvb NUM`'s description says that to print the flag `NUM` is `221`. So we provide the correct arguments to `/challenge/challenge --whggvb 221` which displays the right flag. 
 
 ***
 
