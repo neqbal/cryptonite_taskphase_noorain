@@ -148,9 +148,10 @@ For that we use `2>&1`. `2>` redirects stderr from the `/challenge/run` command,
 ![](./sc/sc53.png)
 
 ### Explanation
-The stdout of `/challenge/run` is duplicated and put written into the file `code` and then it is moved ahead to stdin of `/challenge/college`. \
+The stdout of `/challenge/run` is duplicated and written into the file `code` and then it is moved ahead to stdin of `/challenge/college`. \
 Upon reading the contents of code we see that `/challenge/pwn` requires a specific argument so that it can give the correct output to `/challenge/college` so that it can display the flag. 
 We can intercept the correct output of `/challenge/pwn` and see what the correct input to `/challenge/college` is. 
+
 ![](./sc/sc54.png)
 
 ***
@@ -167,8 +168,12 @@ We can intercept the correct output of `/challenge/pwn` and see what the correct
 
 ### Explanation
 
-`/challenge/planet` is run and its stdin is hooked to a pipe. Next `>(/challenge/the)` is executed and its stdin is hooked to an named pipe. Next `tee` command is executed and its first argument is replaced with the named pipe. Next `/challenge/hack` is executed.\
-`tee` read stdout of `/challenge/hack` then wrote it to the named pipe and then stdout. \
+`/challenge/planet` is run and its stdin is hooked to a pipe. \ 
+Next `>(/challenge/the)` is executed and its stdin is hooked to a named pipe. \
+Next `tee` command is executed and its first argument is replaced with the previously created named pipe. \
+Next `/challenge/hack` is executed.
+
+`tee` reads stdout of `/challenge/hack` then writes it to the named pipe and then stdout. \
 `/challenge/the` reads its input from the named pipe. \
 `/challenge/planet` reads its input from stdout where `tee` wrote earlier.
 
