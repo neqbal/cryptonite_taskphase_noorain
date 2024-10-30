@@ -4,7 +4,7 @@
 
 &nbsp;
 
-![](./sc/sc1.png)
+![](./sc/sc74.png)
 
 #### Explanation 
 The file systems starts from the root directory which can be accesed using `/`.
