@@ -96,3 +96,89 @@ as we can see `/477ce.html` is a page that cannot be visited by webcrawlers but 
 ![](./sc/sc11.png)
 
 In this challenge we just had to change the `isAdmin` value from 0 to 1 in our cookies which will basically tell the server that we are an admin.
+
+&nbsp;
+
+***
+
+# Who are you
+
+### Message headers
+They are a key value pairs included in the header section of a message being sent over a network protocol like HTTP or email (SMTP) etc.\
+It carries the meta data about the message which provides information about the message.
+
+There are several types of message headers such as General headers(Applies to both request and response), request headers(provides information about client's request), response headers(provides information about server's response), entity headers(contains information about the content of the message).
+
+For this challlenge we will look into Request headers
+
+### Request headers
+
+![](./sc/sc13.png)
+
+Headers can be viewed under the network tab of developer tools or we can use bursuite to view it.
+
+&nbsp;
+
+![](./sc/sc12.png)
+
+Under the headers section above there is a request headers section and under that there is a key value pair that states the browser and operating system. 
+
+So we just have to change the value to `PicoBrowser`
+
+![](./sc/sc14.png)
+
+&nbsp;
+
+![](./sc/sc15.png)
+
+To spoof the server into thinking we were directed to this site from the correct url we can use the `Referer` header under request headers
+
+![](./sc/sc16.png)
+
+&nbsp;
+
+![](./sc/sc17.png)
+
+To provide the server with the Date and time at which the message was generated we can use `Date` header.
+
+![](./sc/sc18.png)
+
+&nbsp;
+
+![](./sc/sc19.png)
+
+`DNT` can be used to signal that we dont want to be tracked by websites and third parties.
+
+![](./sc/sc20.png)
+
+&nbsp;
+
+![](./sc/sc21.png)
+
+To specify the IP address we can use `X-Forwaded-For`. 
+This header is a custom header i.e it is not included in the IETF RFC standard.
+It was introduced by various proxy vendors to realy client's original IP address. 
+Since this is an unofficial header, hence it has X at the begining
+
+![](./sc/sc22.png)
+
+&nbsp;
+
+![](./sc/sc23.png)
+
+To specify the language we can use the `Accept-Language` header
+
+![](./sc/sc25.png)
+
+&nbsp;
+
+![](./sc/sc24.png)
+
+&nbsp;
+
+***
+
+# Some Assembly Required
+
+
+
