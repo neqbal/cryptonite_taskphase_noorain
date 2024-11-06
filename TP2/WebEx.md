@@ -178,7 +178,32 @@ To specify the language we can use the `Accept-Language` header
 
 ***
 
-# Some Assembly Required
+# SOAP
 
+XXE is XML external entity injection.
+It allows attackers to interfere with an application's normal processing of XML data.
+This attack occurs when XML input containing a reference to an external entity is processed by a weakly configured XML parser. 
+
+In this challenge we have to exploit XXE to retreive files in `etc/passwd/` on the server. 
+
+&nbsp;
+
+![](./sc/sc26.png)
+
+```XML
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+```
+
+This was added in transit. 
+This defines an entity named `xxe` that tries to read the `/etc/passwd/` file on a Unix-like system
+
+Now when the XML parser on the server reads `&xxe;`, it will attempt to fetch the contents of the `/etc/passwd/`. 
+
+And the output will be 
+
+![](./sc/sc27.png)
+
+As we can see this is typically what is stored inside `/etc/pssawd/` in a Unix-like system
 
 
