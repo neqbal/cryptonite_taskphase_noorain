@@ -206,4 +206,38 @@ And the output will be
 
 As we can see this is typically what is stored inside `/etc/pssawd/` in a Unix-like system
 
+&nbsp;
+
+***
+
+# More SQLi
+
+SQL injection is a way attackers can use to inject mallicious sql querrys in between. \
+If a SQL querry uses user input then the user can write the input such a way that will allow them to insert their own SQL querry within that user input. \
+The server will execute the querry normally and it will also execute the attackers malicious querry.
+
+
+    SQL query: SELECT id FROM users WHERE password = 'ajksbd' AND username = 'kajsdb'
+
+In this challenge this is the SQL querry that executed at ther server side \
+The password and username is entered by user without the inverted commas \
+SQL detects a string input by putting it inside inverted comma \
+So if we were to add an inverted comma at the beginning which will allow us to add our own querry after it and end that querry with `--` which is basically a start of a comment
+
+    SELECT id FROM users WHERE password = ' ' OR 1=1 --' AND username = 'kajsdb'
+
+The password ` ' OR 1=1 --` is added by us. \
+The inverted comma at the begining and the inverted comma inserted by SQL will form one string which will act as an input to `password` \
+Since password is not equal to that, it will result in false. \
+But the presence of `OR 1=1` will result in `true` and `--` will comment out anything after it \
+So overall the `WHERE` clause will result in true and we will pass the login page. 
+
+![](./sc/sc30.png)
+
+Now we can enter ` ' UNION SELECT name, sql, null FROM sqlite_master; --`
+
+This querry will give us the name of all the tables and commands used to create the flag. \
+Among these tables we can see that there is a table that contains a column called `flag` 
+
+Now we just have to retreive it using ` ' UNION SELECT flag, null, null FROM more_tables;--`
 
