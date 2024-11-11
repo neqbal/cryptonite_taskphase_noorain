@@ -2,14 +2,14 @@
 
 Figure what the given assembly code is doing when it is provided with two integer arguments
 
-```ARM9
+```ARM
  func1:
 	sub	sp, sp, #16
 ```
 `sp` stands for stack pointer \
 This line subtracts 16 bytes from the stack pointer to make space for local variables
 
-```ARM9
+```ARM
     str	w0, [sp, 12]
 	str	w1, [sp, 8]
 ```
@@ -23,7 +23,7 @@ In the above statement w0 contains argument 1 which is being pushed onto the sta
 
 After this the arguments are again loaded into the register for comparison. 
 
-```ARM9
+```ARM
     cmp	w1, w0
 	bls	.L2
 	ldr	w0, [sp, 12]
@@ -34,7 +34,7 @@ After this the arguments are again loaded into the register for comparison.
 If w1 is less than or equal to w0 then it jumps to label .L2. \
 If the jump to .L2 was not taken, it loads the first argument back into w0 and jumps to label .L3
 
-```ARM9
+```ARM
 .L2:
 	ldr	w0, [sp, 8]
 .L3:
