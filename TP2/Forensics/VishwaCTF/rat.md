@@ -111,18 +111,52 @@ CREATE TABLE maintainers (
 )
 
 INSERT INTO `bank`.`maintainers`
-### SET
-###   @1=7
-###   @2='Matthew'
-###   @3='Miller'
-###   @4='matthew.miller@example.com'
-###   @5='789-012-3456'
-###   @6='Database Administrator'
-###   @7='DBA'
-###   @8='12:00:00'
-###   @9='14:00:00'
+ SET
+   @1=7
+   @2='Matthew'
+   @3='Miller'
+   @4='matthew.miller@example.com'
+   @5='789-012-3456'
+   @6='Database Administrator'
+   @7='DBA'
+   @8='12:00:00'
+   @9='14:00:00'
 
 There are some transactions that appear shady 
 These transactions happened on some other date but were inserted into the database at a later data
 
+I read all the querry that manipulated the employees table and i found this
 
+UPDATE `bank`.`employees`
+WHERE
+  @1=1
+  @2='John'
+  @3='Smith'
+  @4='1985:05:15'
+  @5='john.smith@example.com'
+  @6='1234567890'
+  @7='123 Main St'
+  @8='Mumbai'
+  @9='Maharashtra'
+  @10='400001'
+  @11=1
+SET
+  @1=1
+  @2='John'
+  @3='Darwin'
+  @4='1990:01:01'
+  @5='johndoe@example.com'
+  @6='+1234567890'
+  @7='123 Main St'
+  @8='Anytown'
+  @9='Anystate'
+  @10='12345'
+  @11=1
+at 80520
+#240227 15:31:29 server id 1  end_log_pos 80551 CRC32 0xebf8ef83 	Xid = 2928
+
+This looks fishy. The name was changed and address was also changed to nowhere \
+This also happened during the working hours of the traiter Matthew \
+Therefore Jhon darwin could be the outsider
+
+I dont know what the flag format is and i cannot find anything else in this log file

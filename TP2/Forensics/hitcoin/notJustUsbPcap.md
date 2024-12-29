@@ -1,15 +1,31 @@
 ![](./sc/sc1.png)
 
-The bluetooth device used here is pixel buds A series and there are several audio files captured here
+The host sends a HCI_cmd and requests for the name of the controller
+The controller sends a HCI_EVT and sends its name
+The bluetooth device used here is pixel buds A series
+The Google Pixel Buds A-Series uses the AAC and SBC Bluetooth codecs for audio encoding 
 
-The Google Pixel Buds A-Series uses the AAC and SBC Bluetooth codecs for audio: 
+![](./sc/sc6.png)
+This is the first audio that was sent. It was sent using MPEG1 encoding.
 
-AAC uses MPG-2 or MPG-4 protocol
+I AM CLUELESS NOW
 
-I used this command to extract the keyboard inputs 
+There are several IP address that communicate via USB 
+1.1.1 (Not sure what this is)
+![](./sc/sc4.png)
+There is no HID data so it probably does not have the flag
 
-    tshark -r ./usb.pcap -Y 'usb.capdata && usb.data_len == 8' -T fields -e usb.capdata | sed 's/../:&/g2' | keybaord.txt
+1.10.1 (Keyboard)
+I used this tool to extract and read keyboard input (https://github.com/TeamRocketIst/ctf-usb-keyboard-parser)
 
-![](./sc/sc2.png)
+![](./sc/sc5.png)
 
-(https://github.com/TeamRocketIst/ctf-usb-keyboard-parser)
+
+1.9.1 (Mouse)
+Upon analyzing the mouse using https://github.com/WangYihang/USB-Mouse-Pcap-Visualizer I got this
+
+![](./sc/sc3.png)
+
+Is this the flag? Not sure
+
+
