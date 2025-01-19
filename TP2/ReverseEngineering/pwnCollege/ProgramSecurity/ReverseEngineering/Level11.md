@@ -34,11 +34,11 @@ This program stores an MD5 hash of the entire file before we can change any addr
 
 We can still change the offsets of if statements to get the flag
 
-The first if condition which checks the intergrity 
+The first if condition which checks the integrity 
 
     1c01:	0f 85 e0 00 00 00    	jne    1ce7 <open@plt+0xa77>
 
-We can change `85` to `84` then the instruction will `je` instead of `jne`
+We can change `85` to `84` then the instruction will be `je` instead of `jne`
 
 The second if condition which checks the hash of user input
 
